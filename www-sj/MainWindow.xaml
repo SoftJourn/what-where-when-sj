@@ -57,7 +57,7 @@
                     <RowDefinition MaxHeight="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="authorTextBlock" Grid.Row="0" Text="Author" FontSize="30" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="authorTextBlock" Grid.Row="0" Text="Author" FontSize="30" FontStyle="Italic" FontWeight="Bold" Padding="10,0,0,0"/>
                 <TextBlock x:Name="questionTextBlock" Grid.Row="1" Text="Question" FontSize="30" TextWrapping="Wrap" Padding="10" TextAlignment="Justify"/>
             </Grid>
             <TextBlock x:Name="answerTextBlock" Grid.Row="0" Grid.Column="1" Text="Answer" FontSize="30" TextWrapping="Wrap" Padding="10" Margin="0,40,0,0" Background="AliceBlue" TextAlignment="Justify"/>

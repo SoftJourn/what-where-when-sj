@@ -16,6 +16,8 @@ namespace www_sj
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly string AssemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
         private DispatcherTimer _timer;
         private int _timerTicks;
         private int _timerTicksMax;
@@ -131,36 +133,38 @@ namespace www_sj
             timerTextBlock.Text = _timerTicks.ToString("00");
             if (_timerTicks == _timerTicksMax - 10)
             {
-                //SystemSounds.Beep.Play();
                 Beep1();
             }
             if (_timerTicks == _timerTicksMax)
             {
                 _timer.Stop();
-                //SystemSounds.Hand.Play();
                 Beep2();
             }
         }
 
-        private void Beep1()
+        private static void Beep1()
         {
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                @"resources\mat1.mp3");
+            var path = Path.Combine(AssemblyLocation, @"resources\mat1.mp3");
             PlaySound(path);
         }
 
-        private void Beep2()
+        private static void Beep2()
         {
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                @"resources\mat2.mp3");
+            var path = Path.Combine(AssemblyLocation, @"resources\mat2.mp3");
             PlaySound(path);
         }
 
-        private void PlaySound(string path)
+        private static void PlaySound(string path)
         {
             var mediaPlayerBeep = new MediaPlayer();
             mediaPlayerBeep.Open(new Uri(path));
             mediaPlayerBeep.Play();
+            //do
+            //{
+            //    Thread.Sleep(10);
+            //} while (!mediaPlayerBeep.NaturalDuration.HasTimeSpan);
+            //var duration = mediaPlayerBeep.NaturalDuration.TimeSpan;
+            //Thread.Sleep(duration);
             //mediaPlayerBeep.Close();
         }
     }
