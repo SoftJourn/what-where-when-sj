@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -39,9 +39,9 @@
             </Grid>
             <StackPanel Grid.Row="0" Grid.Column="2">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,0">
-                    <Button x:Name="startTimer60secButton" Content="60 sec" Width="60" Height="30" FontSize="20" Click="startTimer60secButton_Click"/>
+                    <Button x:Name="startTimer60secButton" Content="60 sec" Width="70" Height="30" FontSize="20" Background="White" Click="startTimer60secButton_Click"/>
                     <TextBlock x:Name="space60_60TextBlock" Text=" " FontSize="14" FontStyle="Italic"/>
-                    <Button x:Name="startTimer30secButton" Content="30 sec" Width="60" Height="30" FontSize="20" Click="startTimer30secButton_Click"/>
+                    <Button x:Name="startTimer30secButton" Content="30 sec" Width="70" Height="30" FontSize="20" Background="White" Click="startTimer30secButton_Click"/>
                 </StackPanel>
                 <TextBlock x:Name="timerTextBlock" Text="00" Width="70" FontSize="60" FontWeight="Bold" />
             </StackPanel>
@@ -70,10 +70,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="gameButton" Content="Game" Grid.Column="0" Width="60" Height="30" FontSize="20" Click="gameButton_Click"/>
-            <Button x:Name="whirligigButton" Content="Spinning top" Grid.Column="1" Width="120" Height="30" FontSize="20" Click="whirligigButton_Click"/>
-            <Button x:Name="questionButton" Content="Question" Grid.Column="2" Height="30" Width="90" FontSize="20" Click="questionButton_Click"/>
-            <Button x:Name="answerButton" Content="Answer" Grid.Column="3" Width="75" Height="30" FontSize="20" Click="answerButton_Click"/>
+            <Button x:Name="gameButton" Content="Game" Grid.Column="0" Width="130" Height="30" FontSize="20" Background="White" Click="gameButton_Click"/>
+            <Button x:Name="whirligigButton" Content="Spinning top" Grid.Column="1" Width="130" Height="30" FontSize="20" Background="White" Click="whirligigButton_Click"/>
+            <Button x:Name="questionButton" Content="Question" Grid.Column="2" Width="130" Height="30" FontSize="20" Background="White" Click="questionButton_Click"/>
+            <Button x:Name="answerButton" Content="Answer" Grid.Column="3" Width="130" Height="30" FontSize="20" Background="White" Click="answerButton_Click"/>
         </Grid>
     </Grid>
 </Window>
