@@ -48,19 +48,14 @@
         </Grid>
         
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="6*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition MaxHeight="40"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock x:Name="authorTextBlock" Grid.Row="0" Text="Author" FontSize="30" FontStyle="Italic" FontWeight="Bold" Padding="10,0,0,0"/>
-                <TextBlock x:Name="questionTextBlock" Grid.Row="1" Text="Question" FontSize="30" TextWrapping="Wrap" Padding="10" TextAlignment="Justify"/>
-            </Grid>
-            <TextBlock x:Name="answerTextBlock" Grid.Row="0" Grid.Column="1" Text="Answer" FontSize="30" TextWrapping="Wrap" Padding="10" Margin="0,40,0,0" Background="AliceBlue" TextAlignment="Justify"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="6.5*"/>
+                <RowDefinition Height="3.5*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="authorTextBlock" Grid.Row="0" Text="Author" FontSize="30" FontStyle="Italic" FontWeight="Bold" Padding="10,0,0,0"/>
+            <TextBlock x:Name="questionTextBlock" Grid.Row="1" Text="Question" FontSize="30" TextWrapping="Wrap" Padding="10" TextAlignment="Justify"/>
+            <TextBlock x:Name="answerTextBlock" Grid.Row="2" Grid.Column="1" Text="Answer" FontSize="30" TextWrapping="Wrap" Padding="10" Background="AliceBlue" TextAlignment="Justify"/>
         </Grid>
         
         <Grid Grid.Row="2">
