@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:www_sj"
         mc:Ignorable="d"
-        Title="WWW-SJ" Height="507.235" Width="838.179">
+        Title="WWW-SJ" Height="520" Width="830">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
@@ -19,8 +20,8 @@
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
-                <TextBlock x:Name="roundTextBlock" Text="Round" FontSize="36" FontWeight="Bold"/>
-                <TextBlock x:Name="roundNumberTextBlock" Text="00" FontSize="60" Width="70" FontWeight="Bold"/>
+                <TextBlock x:Name="RoundTextBlock" Text="Round" FontSize="36" FontWeight="Bold"/>
+                <TextBlock x:Name="RoundNumberTextBlock" Text="00" FontSize="60" Width="70" FontWeight="Bold"/>
             </StackPanel>
             <!--<Image x:Name="questionImage" Grid.Row="0" Grid.Column="1"/>-->
             <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" MinWidth="300">
@@ -29,21 +30,21 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock x:Name="scoreExpertsTextBlock" Text="Experts" FontSize="36" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBox x:Name="scoreExpertsNumberTextBox" TextWrapping="Wrap" Text="0" MaxLength="1" FontSize="60" FontWeight="Bold" Width="41"/>
+                    <TextBlock x:Name="ScoreExpertsTextBlock" Text="Experts" FontSize="36" FontStyle="Italic" FontWeight="Bold"/>
+                    <xctk:IntegerUpDown x:Name="ScoreExpertsNumberTextBox" FormatString="N0" Value="0" Increment="1" Minimum="0" Maximum="6" MaxWidth="63" FontSize="60" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock x:Name="scoreGuestsTextBlock" Text="Guests" FontSize="36" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBox x:Name="scoreGuestsNumberTextBox" TextWrapping="Wrap" Text="0" MaxLength="1" FontSize="60" FontWeight="Bold" Width="41"/>
+                    <TextBlock x:Name="ScoreGuestsTextBlock" Text="Guests" FontSize="36" FontStyle="Italic" FontWeight="Bold"/>
+                    <xctk:IntegerUpDown x:Name="ScoreGuestsNumberTextBox" FormatString="N0" Value="0" Increment="1" Minimum="0" Maximum="6" MaxWidth="63" FontSize="60" FontWeight="Bold"/>
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="0" Grid.Column="2">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,0">
-                    <Button x:Name="startTimer60secButton" Content="60 sec" Width="70" Height="30" FontSize="20" Background="White" Click="startTimer60secButton_Click"/>
-                    <TextBlock x:Name="space60_60TextBlock" Text=" " FontSize="14" FontStyle="Italic"/>
-                    <Button x:Name="startTimer30secButton" Content="30 sec" Width="70" Height="30" FontSize="20" Background="White" Click="startTimer30secButton_Click"/>
+                    <Button x:Name="StartTimer60SecButton" Content="60 sec" Width="70" Height="30" FontSize="20" Background="White" Click="startTimer60secButton_Click"/>
+                    <TextBlock Text=" " FontSize="14" FontStyle="Italic"/>
+                    <Button x:Name="StartTimer30SecButton" Content="30 sec" Width="70" Height="30" FontSize="20" Background="White" Click="startTimer30secButton_Click"/>
                 </StackPanel>
-                <TextBlock x:Name="timerTextBlock" Text="00" Width="70" FontSize="60" FontWeight="Bold" />
+                <TextBlock x:Name="TimerTextBlock" Text="00" Width="70" FontSize="60" FontWeight="Bold" />
             </StackPanel>
         </Grid>
         
@@ -53,9 +54,9 @@
                 <RowDefinition Height="6.5*"/>
                 <RowDefinition Height="3.5*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="authorTextBlock" Grid.Row="0" Text="Author" FontSize="30" FontStyle="Italic" FontWeight="Bold" Padding="10,0,0,0"/>
-            <TextBlock x:Name="questionTextBlock" Grid.Row="1" Text="Question" FontSize="30" TextWrapping="Wrap" Padding="10" TextAlignment="Justify"/>
-            <TextBlock x:Name="answerTextBlock" Grid.Row="2" Grid.Column="1" Text="Answer" FontSize="30" TextWrapping="Wrap" Padding="10" Background="AliceBlue" TextAlignment="Justify"/>
+            <TextBlock x:Name="AuthorTextBlock" Grid.Row="0" Text="Author" FontSize="30" FontStyle="Italic" FontWeight="Bold" Padding="10,0,0,0"/>
+            <TextBlock x:Name="QuestionTextBlock" Grid.Row="1" Text="Question" FontSize="30" TextWrapping="Wrap" Padding="10" TextAlignment="Justify"/>
+            <TextBlock x:Name="AnswerTextBlock" Grid.Row="2" Text="Answer" FontSize="30" TextWrapping="Wrap" Padding="10" Background="AliceBlue" TextAlignment="Justify"/>
         </Grid>
         
         <Grid Grid.Row="2">
@@ -65,10 +66,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="gameButton" Content="Game" Grid.Column="0" Width="130" Height="30" FontSize="20" Background="White" Click="gameButton_Click"/>
-            <Button x:Name="whirligigButton" Content="Spinning top" Grid.Column="1" Width="130" Height="30" FontSize="20" Background="White" Click="whirligigButton_Click"/>
-            <Button x:Name="questionButton" Content="Question" Grid.Column="2" Width="130" Height="30" FontSize="20" Background="White" Click="questionButton_Click"/>
-            <Button x:Name="answerButton" Content="Answer" Grid.Column="3" Width="130" Height="30" FontSize="20" Background="White" Click="answerButton_Click"/>
+            <Button x:Name="GameButton" Content="Game" Grid.Column="0" Width="130" Height="30" FontSize="20" Background="White" Click="gameButton_Click"/>
+            <Button x:Name="SpinningTopButton" Content="Spinning top" Grid.Column="1" Width="130" Height="30" FontSize="20" Background="White" Click="spinningTopButton_Click"/>
+            <Button x:Name="QuestionButton" Content="Question" Grid.Column="2" Width="130" Height="30" FontSize="20" Background="White" Click="questionButton_Click"/>
+            <Button x:Name="AnswerButton" Content="Answer" Grid.Column="3" Width="130" Height="30" FontSize="20" Background="White" Click="answerButton_Click"/>
         </Grid>
     </Grid>
 </Window>

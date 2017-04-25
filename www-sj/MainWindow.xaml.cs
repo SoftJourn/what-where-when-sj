@@ -29,9 +29,9 @@ namespace www_sj
         public MainWindow()
         {
             InitializeComponent();
-            authorTextBlock.Text = "";
-            questionTextBlock.Text = "";
-            answerTextBlock.Text = "";
+            AuthorTextBlock.Text = "";
+            QuestionTextBlock.Text = "";
+            AnswerTextBlock.Text = "";
             _roundNumber = 0;
             _timerTicksMax = 60;
         }
@@ -55,9 +55,9 @@ namespace www_sj
             }
         }
 
-        private void whirligigButton_Click(object sender, RoutedEventArgs e)
+        private void spinningTopButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Spin a whirligig?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = MessageBox.Show("Spinning top?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) return;
             if (_question != null)
             {
@@ -66,18 +66,18 @@ namespace www_sj
             _question = _game.NextQuestion();
             if (_question == null)
             {
-                authorTextBlock.Text = "GAME OVER";
-                questionTextBlock.Text = "";
-                answerTextBlock.Text = "";
+                AuthorTextBlock.Text = "GAME OVER";
+                QuestionTextBlock.Text = "";
+                AnswerTextBlock.Text = "";
                 //questionImage.Source = null;
                 return;
             }
 
             _roundNumber++;
-            roundNumberTextBlock.Text = _roundNumber.ToString("00");
-            authorTextBlock.Text = $"{_question.OrdinalNumber}. {_question.Author}";
-            questionTextBlock.Text = "";
-            answerTextBlock.Text = "";
+            RoundNumberTextBlock.Text = _roundNumber.ToString("00");
+            AuthorTextBlock.Text = $"{_question.OrdinalNumber}. {_question.Author}";
+            QuestionTextBlock.Text = "";
+            AnswerTextBlock.Text = "";
             //questionImage.Source = !string.IsNullOrEmpty(_question.Image) ? new BitmapImage(new Uri(_question.Image)) : null;
             InitTimer();
         }
@@ -87,8 +87,8 @@ namespace www_sj
             var result = MessageBox.Show("Show question?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) return;
             if (_question == null) return;
-            questionTextBlock.Text = _question.Text;
-            answerTextBlock.Text = "";
+            QuestionTextBlock.Text = _question.Text;
+            AnswerTextBlock.Text = "";
             //questionImage.Source = !string.IsNullOrEmpty(_question.Image) ? new BitmapImage(new Uri(_question.Image)) : null;
             InitTimer();
         }
@@ -98,7 +98,7 @@ namespace www_sj
             var result = MessageBox.Show("Show answer?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) return;
             if (_question == null) return;
-            answerTextBlock.Text = _question.Answer;
+            AnswerTextBlock.Text = _question.Answer;
         }
 
         private void startTimer60secButton_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace www_sj
         private void InitTimer()
         {
             _timer?.Stop();
-            timerTextBlock.Text = "00";
+            TimerTextBlock.Text = "00";
             _timerTicks = 0;
             _timer = new DispatcherTimer();
             _timer.Tick += Timer_Tick;
@@ -130,7 +130,7 @@ namespace www_sj
         private void Timer_Tick(object sender, EventArgs e)
         {
             _timerTicks++;
-            timerTextBlock.Text = _timerTicks.ToString("00");
+            TimerTextBlock.Text = _timerTicks.ToString("00");
             if (_timerTicks == _timerTicksMax - 10)
             {
                 Beep1();
