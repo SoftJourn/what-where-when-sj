@@ -36,7 +36,9 @@ namespace www_sj
             _timerTicksMax = 60;
         }
 
-        private void gameButton_Click(object sender, RoutedEventArgs e)
+        #region Menu
+
+        private void openMenuItem_Click(object sender, RoutedEventArgs e)
         {
             var dlg = new OpenFileDialog
             {
@@ -54,6 +56,13 @@ namespace www_sj
                 _roundNumber = 0;
             }
         }
+
+        private void exitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        #endregion
 
         private void spinningTopButton_Click(object sender, RoutedEventArgs e)
         {
