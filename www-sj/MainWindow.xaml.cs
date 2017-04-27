@@ -93,8 +93,6 @@ namespace www_sj
 
         private void questionButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Show question?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result != MessageBoxResult.Yes) return;
             if (_question == null) return;
             QuestionTextBlock.Text = _question.Text;
             AnswerTextBlock.Text = "";
