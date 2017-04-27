@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:www_sj"
         mc:Ignorable="d"
-        Title="WWW-SJ" Height="520" Width="830">
+        Title="WWW-SJ" Height="520" Width="830" Icon="resources/what-where-when48.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
