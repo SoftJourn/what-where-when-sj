@@ -102,6 +102,11 @@ namespace www_sj
 
         private void answerButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(QuestionTextBlock.Text.Trim()))
+            {
+                MessageBox.Show("Question should go first!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
             var result = MessageBox.Show("Show answer?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) return;
             if (_question == null) return;
