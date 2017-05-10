@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
+using www_sj.Enums;
 
 namespace www_sj.Models
 {
@@ -11,7 +12,11 @@ namespace www_sj.Models
         public string Text { get; set; }
         public string Image { get; set; }
         public string Answer { get; set; }
-        public bool Asked { get; set; }
+        public string AnswerImage { get; set; }
+        public int RoundNumber { get; set; }
+        public Winner Winner { get; set; }
+
+        public bool Asked => RoundNumber > 0;
 
         public void Save(string folder, string target)
         {

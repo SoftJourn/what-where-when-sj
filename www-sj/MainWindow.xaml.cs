@@ -70,7 +70,7 @@ namespace www_sj
             if (result != MessageBoxResult.Yes) return;
             if (_question != null)
             {
-                _question.Asked = true;
+                _question.RoundNumber = _roundNumber;
             }
             _question = _game.NextQuestion();
             if (_question == null)
@@ -129,6 +129,24 @@ namespace www_sj
             _timer.Start();
         }
 
+        private void scoreExpertsNumberTextBox_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            if (_question != null)
+            {
+                
+            }
+        }
+
+        private void scoreGuestsNumberTextBox_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            if (_question != null)
+            {
+
+            }
+        }
+
+        #region Service Methods
+
         private void InitTimer()
         {
             _timer?.Stop();
@@ -179,5 +197,7 @@ namespace www_sj
             //Thread.Sleep(duration);
             //mediaPlayerBeep.Close();
         }
+
+        #endregion
     }
 }

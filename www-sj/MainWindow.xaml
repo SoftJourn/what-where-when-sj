@@ -44,11 +44,11 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
                     <TextBlock x:Name="ScoreExpertsTextBlock" Text="Experts" FontSize="36" FontStyle="Italic" FontWeight="Bold"/>
-                    <xctk:IntegerUpDown x:Name="ScoreExpertsNumberTextBox" FormatString="N0" Value="0" Increment="1" Minimum="0" Maximum="6" MaxWidth="63" FontSize="60" FontWeight="Bold"/>
+                    <xctk:IntegerUpDown x:Name="ScoreExpertsNumberTextBox" FormatString="N0" Value="0" Increment="1" Minimum="0" Maximum="6" MaxWidth="63" FontSize="60" FontWeight="Bold" ValueChanged="scoreExpertsNumberTextBox_ValueChanged"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
                     <TextBlock x:Name="ScoreGuestsTextBlock" Text="Guests" FontSize="36" FontStyle="Italic" FontWeight="Bold"/>
-                    <xctk:IntegerUpDown x:Name="ScoreGuestsNumberTextBox" FormatString="N0" Value="0" Increment="1" Minimum="0" Maximum="6" MaxWidth="63" FontSize="60" FontWeight="Bold"/>
+                    <xctk:IntegerUpDown x:Name="ScoreGuestsNumberTextBox" FormatString="N0" Value="0" Increment="1" Minimum="0" Maximum="6" MaxWidth="63" FontSize="60" FontWeight="Bold" ValueChanged="scoreGuestsNumberTextBox_ValueChanged"/>
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="0" Grid.Column="2">
