@@ -2,7 +2,9 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -32,6 +34,8 @@ namespace www_sj
             AuthorTextBlock.Text = "";
             QuestionTextBlock.Text = "";
             AnswerTextBlock.Text = "";
+            Grid.SetColumnSpan(AnswerTextBlock, 2);
+            AnswerImage.Source = null;
             _roundNumber = 0;
             _timerTicksMax = 60;
         }
@@ -78,6 +82,8 @@ namespace www_sj
                 AuthorTextBlock.Text = "GAME OVER";
                 QuestionTextBlock.Text = "";
                 AnswerTextBlock.Text = "";
+                Grid.SetColumnSpan(AnswerTextBlock, 2);
+                AnswerImage.Source = null;
                 //questionImage.Source = null;
                 return;
             }
@@ -87,6 +93,8 @@ namespace www_sj
             AuthorTextBlock.Text = $"{_question.OrdinalNumber}. {_question.Author}";
             QuestionTextBlock.Text = "";
             AnswerTextBlock.Text = "";
+            Grid.SetColumnSpan(AnswerTextBlock, 2);
+            AnswerImage.Source = null;
             //questionImage.Source = !string.IsNullOrEmpty(_question.Image) ? new BitmapImage(new Uri(_question.Image)) : null;
             InitTimer();
         }
@@ -96,6 +104,8 @@ namespace www_sj
             if (_question == null) return;
             QuestionTextBlock.Text = _question.Text;
             AnswerTextBlock.Text = "";
+            Grid.SetColumnSpan(AnswerTextBlock, 2);
+            AnswerImage.Source = null;
             //questionImage.Source = !string.IsNullOrEmpty(_question.Image) ? new BitmapImage(new Uri(_question.Image)) : null;
             InitTimer();
         }
@@ -111,6 +121,17 @@ namespace www_sj
             if (result != MessageBoxResult.Yes) return;
             if (_question == null) return;
             AnswerTextBlock.Text = _question.Answer;
+            if (!string.IsNullOrEmpty(_question.AnswerImage))
+            {
+                var imageUri = new Uri(_question.AnswerImage);
+                AnswerImage.Source = new BitmapImage(imageUri);
+                Grid.SetColumnSpan(AnswerTextBlock, 1);
+            }
+            else
+            {
+                Grid.SetColumnSpan(AnswerTextBlock, 2);
+                AnswerImage.Source = null;
+            }
         }
 
         private void startTimer60secButton_Click(object sender, RoutedEventArgs e)

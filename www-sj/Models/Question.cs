@@ -11,6 +11,7 @@ namespace www_sj.Models
         public string Text { get; set; }
         public string Image { get; set; }
         public string Answer { get; set; }
+        public string AnswerImage { get; set; }
         public bool Asked { get; set; }
 
         public void Save(string folder, string target)
