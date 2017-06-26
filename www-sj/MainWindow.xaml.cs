@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -35,6 +37,7 @@ namespace www_sj
             QuestionTextBlock.Text = "";
             AnswerTextBlock.Text = "";
             Grid.SetColumnSpan(AnswerTextBlock, 2);
+            QuestionImage.Source = null;
             AnswerImage.Source = null;
             _roundNumber = 0;
             _timerTicksMax = 60;
@@ -76,6 +79,7 @@ namespace www_sj
             {
                 _question.Asked = true;
             }
+            Volchok();
             _question = _game.NextQuestion();
             if (_question == null)
             {
@@ -83,8 +87,8 @@ namespace www_sj
                 QuestionTextBlock.Text = "";
                 AnswerTextBlock.Text = "";
                 Grid.SetColumnSpan(AnswerTextBlock, 2);
+                QuestionImage.Source = null;
                 AnswerImage.Source = null;
-                //questionImage.Source = null;
                 return;
             }
 
@@ -94,8 +98,8 @@ namespace www_sj
             QuestionTextBlock.Text = "";
             AnswerTextBlock.Text = "";
             Grid.SetColumnSpan(AnswerTextBlock, 2);
+            QuestionImage.Source = null;
             AnswerImage.Source = null;
-            //questionImage.Source = !string.IsNullOrEmpty(_question.Image) ? new BitmapImage(new Uri(_question.Image)) : null;
             InitTimer();
         }
 
@@ -104,9 +108,19 @@ namespace www_sj
             if (_question == null) return;
             QuestionTextBlock.Text = _question.Text;
             AnswerTextBlock.Text = "";
+            if (!string.IsNullOrEmpty(_question.Image))
+            {
+                var imageUri = new Uri(_question.Image);
+                QuestionImage.Source = new BitmapImage(imageUri);
+                Grid.SetColumnSpan(QuestionTextBlock, 1);
+            }
+            else
+            {
+                Grid.SetColumnSpan(QuestionTextBlock, 2);
+                QuestionImage.Source = null;
+            }
             Grid.SetColumnSpan(AnswerTextBlock, 2);
             AnswerImage.Source = null;
-            //questionImage.Source = !string.IsNullOrEmpty(_question.Image) ? new BitmapImage(new Uri(_question.Image)) : null;
             InitTimer();
         }
 
@@ -117,6 +131,7 @@ namespace www_sj
                 MessageBox.Show("Question should go first!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
+            Task.Run(() => Gong());
             var result = MessageBox.Show("Show answer?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) return;
             if (_question == null) return;
@@ -187,18 +202,30 @@ namespace www_sj
             PlaySound(path);
         }
 
+        private static void Gong()
+        {
+            var path = Path.Combine(AssemblyLocation, @"resources\gong.mp3");
+            PlaySound(path);
+        }
+
+        private static void Volchok()
+        {
+            var path = Path.Combine(AssemblyLocation, @"resources\volchok.mp3");
+            PlaySound(path);
+        }
+
         private static void PlaySound(string path)
         {
-            var mediaPlayerBeep = new MediaPlayer();
-            mediaPlayerBeep.Open(new Uri(path));
-            mediaPlayerBeep.Play();
-            //do
-            //{
-            //    Thread.Sleep(10);
-            //} while (!mediaPlayerBeep.NaturalDuration.HasTimeSpan);
-            //var duration = mediaPlayerBeep.NaturalDuration.TimeSpan;
-            //Thread.Sleep(duration);
-            //mediaPlayerBeep.Close();
+            var mediaPlayer = new MediaPlayer();
+            mediaPlayer.Open(new Uri(path));
+            do
+            {
+                Thread.Sleep(10);
+            } while (!mediaPlayer.NaturalDuration.HasTimeSpan);
+            var duration = mediaPlayer.NaturalDuration.TimeSpan;
+            mediaPlayer.Play();
+            Thread.Sleep(duration);
+            mediaPlayer.Close();
         }
     }
 }
