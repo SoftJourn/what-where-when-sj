@@ -48,7 +48,7 @@
                         <Image Source=".\resources\30-seconds.jpg" />
                     </Button>
                 </StackPanel>
-                <TextBlock x:Name="TimerTextBlock" Text="00" Width="70" FontSize="60" FontWeight="Bold" Margin="0 -10" />
+                <TextBlock x:Name="TimerTextBlock" Text="00" Width="70" FontSize="60" FontWeight="Bold" Margin="0 -12" />
             </StackPanel>
         </Grid>
         
